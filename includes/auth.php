@@ -10,7 +10,7 @@ if (session_status() === PHP_SESSION_NONE) {
 function verificarSesion() {
     if (!isset($_SESSION['usuario'])) {
         // Si no hay sesión, redirige al login
-        header("Location: login.php");
+        header("Location: ../login.php");
         exit();
     }
 }
@@ -18,7 +18,7 @@ function verificarSesion() {
 // ✅ Función para verificar si el usuario tiene un rol específico
 function verificarRol($rolesPermitidos = []) {
     if (!isset($_SESSION['rol'])) {
-        header("Location: login.php");
+        header("Location: l../ogin.php");
         exit();
     }
 
@@ -34,7 +34,7 @@ function cerrarSesion() {
     session_start();
     session_unset();
     session_destroy();
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit();
 }
 ?>
