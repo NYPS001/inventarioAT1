@@ -16,10 +16,11 @@ function verificarSesion() {
 }
 
 function tienePermiso(array $rolesPermitidos): bool { 
-            if (!isset($_SESSION['usuario']['rol'])) { 
-                return false; } 
-                return in_array($_SESSION['usuario']['rol'], $rolesPermitidos); 
-} 
+    if (!isset($_SESSION['usuario']['rol'])) { 
+        return false; 
+    } 
+    return in_array($_SESSION['usuario']['rol'], $rolesPermitidos); 
+}
 
 // ✅ Función para verificar si el usuario tiene un rol específico
 function verificarRol($rolesPermitidos = []) {

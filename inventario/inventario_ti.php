@@ -9,7 +9,7 @@ verificarSesion();
 
 // Solo Usuarios TI y Admin pueden acceder a esta vista
 if (!tienePermiso(['TI', 'Admin'])) {
-    header('Location: inventario_ti.php');
+    header('Location: acceso_denegado.php'); // Cambiar a una página adecuada
     exit();
 }
 
