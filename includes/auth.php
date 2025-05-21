@@ -23,7 +23,7 @@ function tienePermiso(array $rolesPermitidos): bool {
 }
 
 // ✅ Función para verificar si el usuario tiene un rol específico
-function verificarRol($rolesPermitidos = ['admin', 'ti', 'inmuebles']) {
+function verificarRol($rolesPermitidos = ['Admin', 'ti', 'inmuebles']) {
     if (!isset($_SESSION['rol'])) {
         header("Location: login.php");
         exit();
