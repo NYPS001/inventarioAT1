@@ -7,7 +7,7 @@ require_once '../includes/auth.php';
 verificarSesion();
 
 if (!tienePermiso(['TI', 'Admin'])) {
-    header('Location: dashboard.php');
+    header('Location: ../dashboard.php');
     exit();
 }
 
