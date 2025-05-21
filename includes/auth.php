@@ -45,6 +45,4 @@ function cerrarSesion() {
 }
 ?>
 
-<?php session_start(); 
-
                 
