@@ -4,6 +4,10 @@
 require_once '../includes/db.php';
 require_once '../includes/auth.php';
 
+echo '<pre>';
+print_r($_SESSION);
+echo '</pre>';
+
 // Verificamos que el usuario haya iniciado sesión
 verificarSesion();
 
