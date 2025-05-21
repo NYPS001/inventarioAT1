@@ -163,8 +163,8 @@ $result = mysqli_stmt_get_result($stmt);
                     <?php endif; ?>
                 </td>
                 <td>
-                    <a href="editar_ti.php?id=<?= $row['id'] ?>">Editar</a> |
-                    <a href="eliminar_ti.php?id=<?= $row['id'] ?>" onclick="return confirm('¿Seguro que deseas eliminar este registro?');">Eliminar</a>
+                    <a href="../funciones_ti/editar_ti.php?id=<?= $row['id'] ?>">Editar</a> |
+                    <a href="../funciones_ti/eliminar_ti.php?id=<?= $row['id'] ?>" onclick="return confirm('¿Seguro que deseas eliminar este registro?');">Eliminar</a>
                 </td>
             </tr>
         <?php endwhile; ?>

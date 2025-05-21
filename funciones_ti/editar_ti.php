@@ -12,7 +12,7 @@ if (!tienePermiso(['TI', 'Admin'])) {
 }
 
 if (!isset($_GET['id'])) {
-    header('Location: inventario_ti.php');
+    header('Location: ../inventario/inventario_ti.php');
     exit();
 }
 
@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         );
 
         if (mysqli_stmt_execute($stmt_update)) {
-            header('Location: inventario_ti.php');
+            header('Location: ../inventario/inventario_ti.php');
             exit();
         } else {
             $errores[] = "Error al actualizar registro.";
@@ -103,11 +103,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Editar registro TI</title>
-    <link rel="stylesheet" href="assets/css/estilos.css">
+    <link rel="stylesheet" href="../assets/css/estilos.css">
 </head>
 <body>
     <h2>Editar artículo - Área TI</h2>
-    <p><a href="inventario_ti.php">← Volver al inventario</a></p>
+    <p><a href="../inventario/inventario_ti.php">← Volver al inventario</a></p>
 
     <?php if (!empty($errores)): ?>
         <div class="errores">

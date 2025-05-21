@@ -30,19 +30,19 @@ $rol = $_SESSION['rol'];
     <h3>Opciones disponibles:</h3>
     <ul>
         <?php if ($rol === 'Admin' || $rol === 'TI'): ?>
-            <li><a href="inventario_ti.php">Inventario TI</a></li>
+            <li><a href="inventario\inventario_ti.php">Inventario TI</a></li>
         <?php endif; ?>
 
         <?php if ($rol === 'Admin' || $rol === 'Audiovisual'): ?>
-            <li><a href="inventario_audiovisual.php">Inventario Audiovisual</a></li>
+            <li><a href="inventario\inventario_audiovisual.php">Inventario Audiovisual</a></li>
         <?php endif; ?>
 
         <?php if ($rol === 'Admin' || $rol === 'Inmuebles'): ?>
-            <li><a href="inventario_inmuebles.php">Inventario Inmuebles</a></li>
+            <li><a href="inventario\inventario_inmuebles.php">Inventario Inmuebles</a></li>
         <?php endif; ?>
 
         <?php if ($rol === 'Admin'): ?>
-            <li><a href="admin_usuarios.php">Administrar Usuarios</a></li>
+            <li><a href="inventario\admin_usuarios.php">Administrar Usuarios</a></li>
         <?php endif; ?>
     </ul>
 </body>

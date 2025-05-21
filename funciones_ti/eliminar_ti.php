@@ -1,21 +1,21 @@
 <?php
 // eliminar_ti.php
 
-require_once 'includes/db.php';
-require_once 'includes/auth.php';
+require_once '../includes/db.php';
+require_once '../includes/auth.php';
 
 // Verificamos que el usuario haya iniciado sesión
 verificarSesion();
 
 // Comprobamos que el usuario tenga permiso para eliminar en TI o sea Admin
 if (!tienePermiso(['TI', 'Admin'])) {
-    header('Location: dashboard.php');
+    header('Location: ../dashboard.php');
     exit();
 }
 
 // Verificamos que se reciba un id válido por GET
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-    header('Location: inventario_ti.php');
+    header('Location: ../inventario/inventario_ti.php');
     exit();
 }
 
@@ -31,7 +31,7 @@ $registro = mysqli_fetch_assoc($resultado);
 
 if (!$registro) {
     // Si no existe el registro, redirigimos a la lista
-    header('Location: inventario_ti.php');
+    header('Location: ../inventario/inventario_ti.php');
     exit();
 }
 
@@ -53,6 +53,6 @@ mysqli_stmt_close($stmt_delete);
 mysqli_close($conn);
 
 // Redirigimos a la lista
-header('Location: inventario_ti.php');
+header('Location: ../inventario/inventario_ti.php');
 exit();
 ?>

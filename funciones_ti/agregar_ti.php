@@ -1,13 +1,13 @@
 <?php
 // agregar_ti.php
 
-require_once 'includes/db.php';
-require_once 'includes/auth.php';
+require_once '../includes/db.php';
+require_once '../includes/auth.php';
 
 verificarSesion();
 
 if (!tienePermiso(['TI', 'Admin'])) {
-    header('Location: dashboard.php');
+    header('Location: ../dashboard.php');
     exit();
 }
 
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         );
 
         if (mysqli_stmt_execute($stmt_insert)) {
-            header('Location: inventario_ti.php');
+            header('Location: ../inventario/inventario_ti.php');
             exit();
         } else {
             $errores[] = "Error al insertar registro.";
@@ -83,11 +83,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Agregar registro TI</title>
-    <link rel="stylesheet" href="assets/css/estilos.css">
+    <link rel="stylesheet" href="../assets/css/estilos.css">
 </head>
 <body>
     <h2>Agregar nuevo artículo - Área TI</h2>
-    <p><a href="inventario_ti.php">← Volver al inventario</a></p>
+    <p><a href="../inventario/inventario_ti.php">← Volver al inventario</a></p>
 
     <?php if (!empty($errores)): ?>
         <div class="errores">
