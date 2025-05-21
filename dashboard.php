@@ -5,10 +5,6 @@
 require_once 'includes/db.php';
 require_once 'includes/auth.php';
 
-echo '<pre>';
-print_r($_SESSION);
-echo '</pre>';
-
 // Verificar que el usuario esté logueado
 verificarSesion();
 
