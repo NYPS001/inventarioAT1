@@ -18,7 +18,7 @@ function verificarSesion() {
 // ✅ Función para verificar si el usuario tiene un rol específico
 function verificarRol($rolesPermitidos = []) {
     if (!isset($_SESSION['rol'])) {
-        header("Location: l../ogin.php");
+        header("Location: ../login.php");
         exit();
     }
 
