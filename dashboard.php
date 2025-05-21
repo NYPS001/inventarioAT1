@@ -46,5 +46,5 @@ $rol = $_SESSION['rol'];
         <?php endif; ?>
     </ul>
 </body>
-</html>
+</html
 
