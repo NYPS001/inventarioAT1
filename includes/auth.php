@@ -15,12 +15,25 @@ function verificarSesion() {
     }
 }
 
-function tienePermiso(array $rolesPermitidos): bool { 
-    if (!isset($_SESSION['usuario']['rol'])) { 
-        return false; 
-    } 
-    return in_array($_SESSION['usuario']['rol'], $rolesPermitidos); 
+function tienePermiso(array $rolesPermitidos): bool {
+    // Verifica que $_SESSION['rol'] esté definido
+    if (!isset($_SESSION['rol'])) {
+        return false;
+    }
+
+    // Normaliza el rol del usuario
+    $rolUsuario = strtoupper(trim($_SESSION['rol']));
+    
+    // Normaliza todos los roles permitidos
+    $rolesNormalizados = array_map(
+        fn($rol) => strtoupper(trim($rol)),
+        $rolesPermitidos
+    );
+
+    // Verifica si el rol está en la lista permitida
+    return in_array($rolUsuario, $rolesNormalizados);
 }
+
 
 // ✅ Función para verificar si el usuario tiene un rol específico
 function verificarRol($rolesPermitidos = ['Admin', 'ti', 'inmuebles']) {
