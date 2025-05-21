@@ -51,11 +51,6 @@ function verificarRol($rolesPermitidos = ['Admin', 'ti', 'inmuebles']) {
     }
 }
 
-function tienePermiso($permiso) {
-       // Lógica para verificar permisos
-       return isset($_SESSION['permisos']) && in_array($permiso, $_SESSION['permisos']);
-   }
-
 // ✅ Función para cerrar sesión
 function cerrarSesion() {
     session_start();
