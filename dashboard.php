@@ -1,5 +1,3 @@
-php
-CopiarEditar
 <?php
 // dashboard.php
 
