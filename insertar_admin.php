@@ -5,7 +5,7 @@
 $host = 'localhost';
 $usuario = 'root';
 $contrasena = '';
-$base_de_datos = 'inventario';
+$base_de_datos = 'inventarioat1';
 
 $conn = new mysqli($host, $usuario, $contrasena, $base_de_datos);
 
