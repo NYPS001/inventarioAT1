@@ -22,6 +22,11 @@ function verificarRol($rolesPermitidos = []) {
         exit();
     }
 
+    if (empty($rolesPermitidos)) {
+        echo "⛔ No se han especificado roles permitidos.";
+        exit();
+    }
+
     // Si el rol del usuario no está en los permitidos, lo saca del sistema
     if (!in_array($_SESSION['rol'], $rolesPermitidos)) {
         echo "⛔ Acceso denegado. No tienes permisos para esta sección.";
