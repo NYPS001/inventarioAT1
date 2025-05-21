@@ -1,45 +1,46 @@
 
 <?php
-// ✳ Incluye el archivo que valida la sesión y el rol
+// dashboard.php
+
+// Incluir archivos necesarios
+require_once 'includes/db.php';
 require_once 'includes/auth.php';
 
-// ✳ Llama a la función que protege esta página (solo usuarios logueados pueden acceder)
-verificar_sesion();
+// Verificar que el usuario esté logueado
+verificarSesion();
 
-// ✳ Recupera el rol del usuario desde la sesión
-$rol = obtener_rol();
+// Obtener los datos de sesión
+$usuario = $_SESSION['usuario'];
+$nombre = $_SESSION['nombre'];
+$rol = $_SESSION['rol'];
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard - Inventario</title>
-    <link rel="stylesheet" href="assets/css/estilos.css"> <!-- CSS opcional -->
+    <title>Dashboard - Sistema de Inventario</title>
+    <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
 <body>
-    <h1>Bienvenido al sistema de inventario</h1>
+    <h2>Bienvenido, <?php echo htmlspecialchars($nombre); ?> (<?php echo htmlspecialchars($rol); ?>)</h2>
 
-    <!-- ✳ Mostramos el rol del usuario -->
-    <p>Tu rol: <strong><?php echo ucfirst($rol); ?></strong></p>
+    <p><a href="logout.php">Cerrar sesión</a></p>
 
-    <!-- ✳ Menú básico según rol -->
-    <nav>
-        <ul>
-            <?php if ($rol === 'admin') : ?>
-                <li><a href="#">Gestionar usuarios</a></li>
-                <li><a href="#">Ver todos los inventarios</a></li>
-            <?php elseif ($rol === 'ti') : ?>
-                <li><a href="#">Inventario TI</a></li>
-            <?php elseif ($rol === 'audiovisual') : ?>
-                <li><a href="#">Inventario Audiovisual</a></li>
-            <?php elseif ($rol === 'inmuebles') : ?>
-                <li><a href="#">Inventario de Inmuebles</a></li>
-            <?php else : ?>
-                <li>No tienes permisos para ver esta información.</li>
-            <?php endif; ?>
-        </ul>
-    </nav>
-</body>
-</html>
+    <hr>
 
+    <h3>Opciones disponibles:</h3>
+    <ul>
+        <?php if ($rol === 'Admin' || $rol === 'TI'): ?>
+            <li><a href="inventario_ti.php">Inventario TI</a></li>
+        <?php endif; ?>
+
+        <?php if ($rol === 'Admin' || $rol === 'Audiovisual'): ?>
+            <li><a href="inventario_audiovisual.php">Inventario Audiovisual</a></li>
+        <?php endif; ?>
+
+        <?php if ($rol === 'Admin' || $rol === 'Inmuebles'): ?>
+            <li><a href="inventario_inmuebles.php">Inventario Inmuebles</a></li>
+        <?php endif; ?>
+
+        <?php if ($rol === 'Admin'): ?>
+            <li><a href="admin_usuarios.php">Administrar Usuarios</a></li_

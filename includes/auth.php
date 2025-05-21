@@ -1,18 +1,41 @@
 <?php
-// ✳ Inicia la sesión PHP para manejar usuarios conectados
-session_start();
+// includes/auth.php
 
-// ✳ Función para verificar si el usuario está logueado
-function verificar_sesion() {
-    if (!isset($_SESSION['usuario_id'])) {
-        // Si no hay sesión activa, redirige a login
+// Inicia sesión si aún no está iniciada
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// ✅ Función para verificar si hay sesión activa
+function verificarSesion() {
+    if (!isset($_SESSION['usuario'])) {
+        // Si no hay sesión, redirige al login
         header("Location: login.php");
         exit();
     }
 }
 
-// ✳ Función para obtener el rol del usuario logueado
-function obtener_rol() {
-    return $_SESSION['usuario_rol'] ?? 'invitado';
+// ✅ Función para verificar si el usuario tiene un rol específico
+function verificarRol($rolesPermitidos = []) {
+    if (!isset($_SESSION['rol'])) {
+        header("Location: login.php");
+        exit();
+    }
+
+    // Si el rol del usuario no está en los permitidos, lo saca del sistema
+    if (!in_array($_SESSION['rol'], $rolesPermitidos)) {
+        echo "⛔ Acceso denegado. No tienes permisos para esta sección.";
+        exit();
+    }
+}
+
+// ✅ Función para cerrar sesión
+function cerrarSesion() {
+    session_start();
+    session_unset();
+    session_destroy();
+    header("Location: login.php");
+    exit();
 }
 ?>
+
