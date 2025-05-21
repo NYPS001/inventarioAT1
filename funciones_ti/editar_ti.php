@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         mysqli_stmt_close($stmt_update);
     }
 }
-
+?>
 
 
 <!DOCTYPE html>
@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <form method="post" enctype="multipart/form-data">
         <label>N. de Serie*:</label><br>
-        <input type="text" name="numero_serie" value="<?php echo htmlspecialchars($registro['numero_serie']); ?>" required><br>
+        <input type="text" name="numero_serie" value="<?php echo htmlspecialchars($registro['num_serie']); ?>" required><br>
 
         <label>Categoría*:</label><br>
         <input type="text" name="categoria" value="<?php echo htmlspecialchars($registro['categoria']); ?>" required><br>

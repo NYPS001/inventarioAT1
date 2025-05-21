@@ -12,15 +12,35 @@ if (session_status() === PHP_SESSION_NONE) {
 function verificarSesion() {
     if (!isset($_SESSION['usuario'])) {
         // Si no hay sesión, redirige al login
-        header("Location: ../login.php");
+        header("Location: login.php");
         exit();
     }
 }
 
-// ✅ Función para verificar si el usuario tiene un rol específico
-function verificarRol($rolesPermitidos = []) {
+function tienePermiso(array $rolesPermitidos): bool {
+    // Verifica que $_SESSION['rol'] esté definido
     if (!isset($_SESSION['rol'])) {
-        header("Location: ../login.php");
+        return false;
+    }
+
+    // Normaliza el rol del usuario
+    $rolUsuario = strtoupper(trim($_SESSION['rol']));
+    
+    // Normaliza todos los roles permitidos
+    $rolesNormalizados = array_map(
+        fn($rol) => strtoupper(trim($rol)),
+        $rolesPermitidos
+    );
+
+    // Verifica si el rol está en la lista permitida
+    return in_array($rolUsuario, $rolesNormalizados);
+}
+
+
+// ✅ Función para verificar si el usuario tiene un rol específico
+function verificarRol($rolesPermitidos = ['Admin', 'ti', 'inmuebles']) {
+    if (!isset($_SESSION['rol'])) {
+        header("Location: login.php");
         exit();
     }
 
@@ -46,3 +66,4 @@ function cerrarSesion() {
 }
 ?>
 
+                

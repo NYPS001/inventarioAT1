@@ -8,10 +8,17 @@ require_once '../includes/auth.php';
 verificarSesion();
 
 // Solo Usuarios TI y Admin pueden acceder a esta vista
+<<<<<<< HEAD
    if (!tienePermiso('TI') && $_SESSION['rol'] !== 'Admin') {
        header('Location: ../dashboard.php');
        exit();
    }
+=======
+if (!tienePermiso(['TI', 'Admin'])) {
+    header('Location: acceso_denegado.php'); // Cambiar a una página adecuada
+    exit();
+}
+>>>>>>> cambios-locales
 
 // Inicializamos variables para filtros y condiciones
 $colaborador = $_GET['colaborador'] ?? '';
