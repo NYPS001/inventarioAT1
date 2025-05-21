@@ -1,4 +1,5 @@
-
+php
+CopiarEditar
 <?php
 // dashboard.php
 
@@ -43,4 +44,9 @@ $rol = $_SESSION['rol'];
         <?php endif; ?>
 
         <?php if ($rol === 'Admin'): ?>
-            <li><a href="admin_usuarios.php">Administrar Usuarios</a></li_
+            <li><a href="admin_usuarios.php">Administrar Usuarios</a></li>
+        <?php endif; ?>
+    </ul>
+</body>
+</html>
+
